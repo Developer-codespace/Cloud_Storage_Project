@@ -4,6 +4,7 @@ import MySQLdb
 import os
 from datetime import datetime
 from werkzeug.utils import secure_filename
+from ai_utils import extract_text, generate_tags, generate_category
 
 app = Flask(__name__)
 CORS(app)
@@ -26,12 +27,16 @@ def upload_file():
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(file_path)
 
+        # AI-based content analysis
+        text_content = extract_text(file_path)
+        tags_list = generate_tags(text_content)
+        category = generate_category(file_path, text_content)
+
         # Additional metadata
         file_size = os.path.getsize(file_path)
         file_type = file.mimetype
-        category = request.form.get('category', 'Uncategorized')
-        tags = request.form.get('tags', '[]')  # You can store as JSON string if needed
-        user_id = 1  # Static or from session
+        tags = ', '.join(tags_list)
+        user_id = 1  # Static for now; can be replaced with session-based ID
         visibility = 'private'
         is_deleted = 0
         storage_location = 'Local'
@@ -61,7 +66,12 @@ def upload_file():
         cursor.execute(sql, values)
         db.commit()
 
-        return jsonify({"message": "File uploaded and metadata saved successfully."}), 200
+        return jsonify({
+            "message": "File uploaded and metadata saved successfully.",
+            "filename": filename,
+            "category": category,
+            "tags": tags_list
+        }), 200
 
     except Exception as e:
         print("Upload error:", e)
