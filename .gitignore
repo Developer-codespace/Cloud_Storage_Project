@@ -7,3 +7,5 @@ ML models.py
 desktop.ini
 experiment_upload.txt
 teting.py
+.DS_Store
+*.log
