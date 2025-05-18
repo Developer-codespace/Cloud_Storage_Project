@@ -1,0 +1,101 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #c9d87d;
+    color: #0A0908;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark Mode */
+.dark-mode {
+    background-color: #0A0908;
+    color: #FEFAE0;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #0f624c;
+    color: #0A0908;
+    font-weight: 600;
+}
+
+#darkModeToggle {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#darkModeToggle:hover {
+    transform: scale(1.1);
+}
+
+/* Main Sections */
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+section {
+    background: #E9EDC9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode section {
+    background: #333;  /*#006d77;*/
+    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Upload Box */
+.upload-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type="file"] {
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #0f624c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #0a3a2d;
+}
+
+/* File List */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #CCD5AE;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+.dark-mode li {
+    background: #555;
+}
