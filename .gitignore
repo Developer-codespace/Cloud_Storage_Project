@@ -3,3 +3,7 @@ __pycache__/
 uploads/
 *.pyc
 .env
+ML models.py
+desktop.ini
+experiment_upload.txt
+teting.py
